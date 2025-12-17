@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 .container {
+  position: relative;
   display: grid;
   max-height: 80%;
   width: 100%;
@@ -16,25 +17,25 @@
     "title"
     "image"
     "button"
-    "download";
+    "footer";
   gap: 10px;
 }
 .container h1 {
   grid-area: title;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px;
   font-size: 32px;
   color: #3c3c3c;
 }
 
-.cat-target img {
+.target img {
   max-width: 400px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px;
   grid-area: image;
 }
-.cat-target {
+.target {
   grid-area: image;
   display: flex;
   justify-content: center;
@@ -43,12 +44,15 @@
   width: 100%;
 }
 body {
-  font-family: Arial, sans-serif;
+  font-family: "MonoLisa", Arial, sans-serif;
   background-color: #f9f9f9;
   color: #3c3c3c;
 }
 
 .btn {
+  grid-area: button;
+  display: block;
+  margin-bottom: 8px;
   justify-self: center;
   width: 150px;
   background-color: #3c3c3c;
@@ -64,9 +68,39 @@ body {
 .btn:active {
   background-color: #222;
 }
-.cat-btn {
+.gen-btn {
   grid-area: button;
 }
 .download {
   grid-area: download;
+}
+
+.bottom-corner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+.bottom-corner .btn {
+  width: auto;
+  padding: 8px 12px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.mode {
+  position: fixed;
+  width: auto;
+  margin: 0;
+  top: 10px;
+  right: 10px;
+}
+.footer {
+  grid-area: footer;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
 }
