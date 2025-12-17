@@ -177,7 +177,7 @@ body {
 
   .buttons {
     flex-direction: column;
-    width: 100%;
+    width: auto;
   }
 
   .gen-btn,
@@ -219,3 +219,4 @@ body {
   max-height: 95%;
   object-fit: contain;
 }
+
