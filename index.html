@@ -5,51 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Generate and download random cat photos with one click."
+      content="Generate and download random cat photos with one click. Free online cat image generator."
     />
     <meta
       name="keywords"
-      content="cats, cat photos, cat pictures, random cat generator, cat images"
+      content="cats, cat photos, cat pictures, random cat generator, cat images, free cat pictures"
     />
-    <meta name="pxtitan" content="Cat Image Generator" />
-    <meta property="og:title" content="Cat Image Generator" />
+    <meta name="author" content="pxtitan" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://pxtitan.github.io/cats" />
+    <meta
+      property="og:title"
+      content="Cat Image Generator - Random Cat Photos"
+    />
     <meta
       property="og:description"
-      content="Generate and download random cat photos with one click."
+      content="Generate and download random cat photos with one click. Free online cat image generator."
     />
     <meta property="og:type" content="website" />
-    <!-- <meta name="twitter:card" content="summary_large_image" /> -->
-    <meta name="twitter:title" content="Cat Image Generator" />
+    <meta property="og:url" content="https://pxtitan.github.io/cats" />
+    <meta
+      property="og:image"
+      content="https://pxtitan.github.io/cats/og-cat.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Cat Image Generator - Random Cat Photos"
+    />
     <meta
       name="twitter:description"
       content="Generate and download random cat photos with one click."
     />
+    <meta
+      name="twitter:image"
+      content="https://pxtitan.github.io/cats/og-cat.jpg"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- dark mode support -->
+    <meta name="color-scheme" content="light dark" />
+    <!-- website icon by emoji -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
 
-    <title>cats</title>
+    <title>Random Cat Image Generator - Free Cat Photos</title>
   </head>
   <body>
     <article class="container">
       <h1 class="title">Random Cat Image Generator</h1>
-      <nav class="buttons">
-        <button class="btn gen-btn">Generate</button>
-        <button class="btn download">Download</button>
+      <nav class="buttons" aria-label="Main controls">
+        <button class="btn gen-btn" aria-label="Generate a random cat image">
+          Generate
+        </button>
+        <button
+          class="btn download"
+          aria-label="Download the current cat image"
+        >
+          Download
+        </button>
         <div class="bottom-corner">
-        <button class="btn live">😽</button>
-        <button class="btn fullscreen">👓</button>
+          <button
+            class="btn live"
+            aria-label="Open in live view"
+            title="Live View"
+          >
+            😽
+          </button>
+          <button
+            class="btn fullscreen"
+            aria-label="Toggle fullscreen mode"
+            title="Fullscreen"
+          >
+            👓
+          </button>
         </div>
-        <button class="btn mode">☀️</button>
+        <button
+          class="btn mode"
+          aria-label="Toggle dark mode"
+          title="Dark Mode"
+        >
+          ☀️
+        </button>
       </nav>
-      <section class="target">
+      <section
+        class="target"
+        aria-live="polite"
+        aria-label="Cat image display area"
+      >
         <p class="info">Click "Generate" to see a random cat image!</p>
       </section>
       <footer class="footer">
         <p>
-          Created by <a href="https://github.com/pxtitan">pxtitan</a>. Source
+          Created by
+          <a href="https://github.com/pxtitan" rel="author">pxtitan</a>. Source
           code on
-          <a href="https://github.com/pxtitan/cats">GitHub</a>.
+          <a href="https://github.com/pxtitan/cats" rel="external">GitHub</a>.
         </p>
+      </footer>
     </article>
   </body>
 </html>

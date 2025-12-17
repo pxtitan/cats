@@ -3,6 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* In your CSS file */
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "MonoLisa", Arial, sans-serif;
+  background-color: light-dark(#ffffff, #000000);
+  color: light-dark(#000000, #ffffff);
+}
+
 .container {
   position: relative;
   display: grid;
@@ -16,16 +30,17 @@
   grid-template-areas:
     "title"
     "image"
-    "button"
+    "buttons"
     "footer";
   gap: 10px;
+  flex: 1;
 }
 .container h1 {
   grid-area: title;
   text-align: center;
   margin: 20px;
   font-size: 32px;
-  color: #3c3c3c;
+  color: light-dark(#3c3c3c, #dbdbdb);
 }
 
 .target img {
@@ -43,36 +58,49 @@
   min-height: 300px;
   width: 100%;
 }
-body {
-  font-family: "MonoLisa", Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #3c3c3c;
+
+.target p.info {
+  color: light-dark(#777, #888);
+}
+
+.buttons {
+  grid-area: buttons;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
-  grid-area: button;
-  display: block;
-  margin-bottom: 8px;
-  justify-self: center;
-  width: 150px;
-  background-color: #3c3c3c;
+  display: inline-block;
+  margin-bottom: 0;
+  width: auto;
+  background-color: light-dark(#3c3c3c, #dbdbdb);
   padding: 10px 15px;
-  color: white;
+  color: light-dark(#ffffff, #000000);
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
 .btn:hover {
-  background-color: #555;
+  background-color: light-dark(#7f7f7f, #7f7f7f);
 }
+
 .btn:active {
-  background-color: #222;
+  background-color: light-dark(#222222, #dddddd);
 }
-.gen-btn {
-  grid-area: button;
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
+
+.gen-btn,
 .download {
-  grid-area: download;
+  width: 150px;
 }
 
 .bottom-corner {
@@ -83,24 +111,111 @@ body {
   bottom: 10px;
   right: 10px;
   z-index: 1000;
+  gap: 8px;
 }
+
 .bottom-corner .btn {
   width: auto;
   padding: 8px 12px;
   font-size: 14px;
-  text-transform: uppercase;
 }
+
 .mode {
   position: fixed;
   width: auto;
   margin: 0;
   top: 10px;
   right: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
 }
+
+.pause-live {
+  margin-top: 10px;
+  background-color: light-dark(#aa3333, #ff5555);
+  color: light-dark(#ffffff, #000000);
+  position: fixed;
+  top: 0;
+  right: 8px;
+  width: auto;
+  padding: 6px 9px;
+  font-size: 14px;
+  z-index: 10000;
+}
+
 .footer {
   grid-area: footer;
   text-align: center;
+  bottom: 10px;
   margin-top: 20px;
   font-size: 14px;
-  color: #777;
+  color: light-dark(#777, #888);
+}
+
+.footer a {
+  color: light-dark(#3c3c3c, #dbdbdb);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    grid-template-areas:
+      "title"
+      "image"
+      "buttons"
+      "footer";
+  }
+
+  .target img {
+    max-width: 90%;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .gen-btn,
+  .download {
+    width: 100%;
+  }
+
+  .bottom-corner {
+    flex-direction: row;
+    bottom: auto;
+    top: auto;
+    position: static;
+    z-index: auto;
+  }
+
+  .fullscreen-view {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.fullscreen-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.fullscreen-view img {
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
 }
