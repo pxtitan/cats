@@ -10,7 +10,12 @@ const body = document.body;
 let liveViewInterval = null;
 let isLiveViewActive = false;
 let fullscreenView = false;
-let theme = "light";
+let theme = localStorage.getItem("theme") || "light";
+let previousTheme = "light";
+
+// Apply saved theme on page load
+document.documentElement.style.colorScheme = theme;
+
 // fetch and display cat image
 
 async function generateCat() {
@@ -44,12 +49,14 @@ function downloadCat() {
 
 function openFullscreenLiveView() {
   if (!fullscreenView) {
+    previousTheme = theme; // Store current theme before fullscreen
     body.innerHTML = `
             <div class="fullscreen-view">
-                <button class="btn bottom-corner exit-fullscreen">Exit Fullscreen</button>
                 <div class="cat-container fullscreen-cat" style=" display: flex; justify-content: center; align-items: center;">
                     ${cats.innerHTML}
                 </div>
+                                <button class="btn bottom-corner exit-fullscreen">Exit Fullscreen</button>
+
                 <button class="pause-live btn">👀</button>
             </div>
             `;
@@ -95,9 +102,11 @@ function openFullscreenLiveView() {
     const exitBtn = document.querySelector(".exit-fullscreen");
     exitBtn.addEventListener("click", () => {
       fullscreenView = false;
-      location.reload();
       clearInterval(liveViewInterval);
-      document.documentElement.style.colorScheme = theme; // Restore theme
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.style.colorScheme = savedTheme;
+      theme = savedTheme;
+      location.reload();
     });
   }
 }
@@ -111,9 +120,11 @@ modeBtn.addEventListener("click", () => {
   if (!currentScheme.includes("dark") || theme === "light") {
     document.documentElement.style.colorScheme = "dark";
     theme = "dark";
+    localStorage.setItem("theme", "dark");
   } else {
     document.documentElement.style.colorScheme = "light";
     theme = "light";
+    localStorage.setItem("theme", "light");
   }
 });
 
@@ -132,6 +143,6 @@ liveBtn.addEventListener("click", () => {
   }
 });
 // Event listeners
-btn.addEventListener("click", generateCat);
-downloadBtn.addEventListener("click", downloadCat);
-fullscreenBtn.addEventListener("click", openFullscreenLiveView);
+if (btn) btn.addEventListener("click", generateCat);
+if (downloadBtn) downloadBtn.addEventListener("click", downloadCat);
+if (fullscreenBtn) fullscreenBtn.addEventListener("click", openFullscreenLiveView);
