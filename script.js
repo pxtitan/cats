@@ -53,7 +53,7 @@ function openFullscreenLiveView() {
     body.innerHTML = `
             <div class="fullscreen-view">
                 <div class="cat-container fullscreen-cat" style=" display: flex; justify-content: center; align-items: center;">
-                    ${cats.innerHTML}
+                    <h1>Loading...</h1>
                 </div>
                                 <button class="btn bottom-corner exit-fullscreen">Exit Fullscreen</button>
 
@@ -145,4 +145,5 @@ liveBtn.addEventListener("click", () => {
 // Event listeners
 if (btn) btn.addEventListener("click", generateCat);
 if (downloadBtn) downloadBtn.addEventListener("click", downloadCat);
-if (fullscreenBtn) fullscreenBtn.addEventListener("click", openFullscreenLiveView);
+if (fullscreenBtn)
+  fullscreenBtn.addEventListener("click", openFullscreenLiveView);
